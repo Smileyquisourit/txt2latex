@@ -1,0 +1,1 @@
+-(p^2 - omega_BdG^2 + 2*omega_BdG*p*zeta_BdG)*(m_alpha + 2/Z_alpha*m_q - 2*Z_alpha*p + m_q*p - p^2)

@@ -1,0 +1,4 @@
+[-(p + 2*omega_BdG*zeta_BdG)*(m_alpha + 2*Z_alpha*m_q - 2*Z_alpha*p + m_q*p - p^2),omega_BdG^2*(m_alpha + 2*Z_alpha*m_q - 2*Z_alpha*p + m_q*p - p^2),(p + 2*omega_BdG*zeta_BdG)*(m_m + Z_m*m_q - Z_m*p),(p + 2*omega_BdG*zeta_BdG)*(2*Z_alpha*m_m - Z_m*m_alpha + m_m*p);
+m_alpha + 2*Z_alpha*m_q - 2*Z_alpha*p + m_q*p - p^2,-p*(m_alpha + 2*Z_alpha*m_q - 2*Z_alpha*p + m_q*p - p^2),Z_m*p - Z_m*m_q - m_m,Z_m*m_alpha - 2*Z_alpha*m_m - m_m*p;
+0,0,-(m_q - p)*(p^2 - omega_BdG^2 + 2*omega_BdG*p*zeta_BdG),m_alpha*(p^2 - omega_BdG^2 + 2*omega_BdG*p*zeta_BdG);
+0,0,p^2 - omega_BdG^2 + 2*omega_BdG*p*zeta_BdG,(2*Z_alpha + p)*(p^2 - omega_BdG^2 + 2*omega_BdG*p*zeta_BdG);]
