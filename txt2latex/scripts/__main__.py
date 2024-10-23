@@ -52,7 +52,7 @@ def main():
     elif args.cmd == "tests":
         tests()
     elif args.cmd == "operators":
-        print("I should start the operators process")
+        raise NotImplementedError("This functionality isn't yet implemented, but will be coming soon ;)")
 
 if __name__ == "__main__":
     main()

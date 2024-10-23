@@ -20,6 +20,26 @@ from txt2latex.src.parsers import latex_parser
 
 multiple_logical_block = r"a + (p^2 + 2*omega*(b - c))*(p^3 - (a*p^2)*(c - d) - a)"
 
+# def translate(expr:str)->str:
+#     """ Translate the given expression
+# 
+#     Translate the given expression by first parsing it for obtaining a logical
+#     expression, then parse this logical expression into a LatexExpression.
+# 
+#     Arguments:
+#     expr : str
+#         The expression to translate
+# 
+#     Return:
+#     translate_expr : str
+#         The translated string
+#     """
+# 
+#     logical_expr = logical_parser.parse_txt_expression(expr)
+#     latex_expr = latex_parser.parse_logical_expression(logical_expr)
+# 
+#     return str(latex_expr)
+
 def main(args):
     """ Entry-point
 
@@ -35,10 +55,12 @@ def main(args):
 
     sys.stdout.write("Starting tanslate process...\n")
     sys.stdout.flush()
+    
     logical_expr = logical_parser.parse_txt_expression(expression_to_translate)
     latex_expr = latex_parser.parse_logical_expression(logical_expr)
 
     sys.stdout.write(f"I've found the following expression:\n{latex_expr}")
+    sys.stdout.flush()
 
 
 if __name__ == "__main__":
