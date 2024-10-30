@@ -4,3 +4,6 @@
 # Ignorer les fichiers de cache Python
 __pycache__/
 *.py[cod]
+
+# Ignorer les fichiers de py_utils
+py_utils/*

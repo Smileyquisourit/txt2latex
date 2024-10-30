@@ -6,6 +6,9 @@
 
 import argparse
 
+from py_utils.Logueur import ConsoleLogueurFactory
+from py_utils.Logueur.log_level import LogLevel
+
 from txt2latex.scripts import \
     translate, \
     tests
@@ -22,6 +25,7 @@ def main():
         prog="txt2latex"
     )
     subparsers = main_parser.add_subparsers(dest="cmd")
+    main_parser.add_argument("-ll", "--log-level",help="The level used for filtering log message",type=int,dest="logLevel",default=1)
 
     # Translate process:
     # ------------------
@@ -47,8 +51,12 @@ def main():
     # Start process:
     # --------------
     args = main_parser.parse_args()
+
+    log = ConsoleLogueurFactory(LogLevel(args.logLevel))
+
     if args.cmd == "translate":
-        translate(args)
+        log.info("Starting translating process.")
+        translate(args,log)
     elif args.cmd == "tests":
         tests()
     elif args.cmd == "operators":

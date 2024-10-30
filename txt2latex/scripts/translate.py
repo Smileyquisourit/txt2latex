@@ -15,49 +15,38 @@ whether what is to be transcribed is a matrix or not (in upcoming version).
 import sys
 import argparse
 
+from py_utils import Logueur
+
 from txt2latex.src.parsers import logical_parser
 from txt2latex.src.parsers import latex_parser
 
 multiple_logical_block = r"a + (p^2 + 2*omega*(b - c))*(p^3 - (a*p^2)*(c - d) - a)"
 
-# def translate(expr:str)->str:
-#     """ Translate the given expression
-# 
-#     Translate the given expression by first parsing it for obtaining a logical
-#     expression, then parse this logical expression into a LatexExpression.
-# 
-#     Arguments:
-#     expr : str
-#         The expression to translate
-# 
-#     Return:
-#     translate_expr : str
-#         The translated string
-#     """
-# 
-#     logical_expr = logical_parser.parse_txt_expression(expr)
-#     latex_expr = latex_parser.parse_logical_expression(logical_expr)
-# 
-#     return str(latex_expr)
-
-def main(args):
+def main(args, log:Logueur):
     """ Entry-point
 
         Function responsible to parse an expression and translate it to a latex expression.
     """
 
+    # Get expression:
+    # ---------------
     if args.file:
         # read the expression
         #expression_to_translate = ...
+        log.fatal("Reading the expression from a file isn't supported yet !")
         raise NotImplementedError("Reading the expression from a file isn't implemented yet, but it will be comming soon ;)")
     else:
         expression_to_translate = args.expression
+        log.debug(f"Reading expression from the command line: {expression_to_translate}")
 
     sys.stdout.write("Starting tanslate process...\n")
     sys.stdout.flush()
     
     logical_expr = logical_parser.parse_txt_expression(expression_to_translate)
+    log.info("Expression translated successfully to a logical expression")
+
     latex_expr = latex_parser.parse_logical_expression(logical_expr)
+    log.info("Logical expression translated successfully to a latex expression")
 
     sys.stdout.write(f"I've found the following expression:\n{latex_expr}")
     sys.stdout.flush()
