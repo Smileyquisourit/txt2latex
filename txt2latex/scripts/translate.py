@@ -17,8 +17,8 @@ import argparse
 
 from py_utils import Logueur
 
-from txt2latex.src.parsers import logical_parser
-from txt2latex.src.parsers import latex_parser
+from txt2latex.src.parsers import LogicalParser
+from txt2latex.src.parsers import LatexParser
 
 multiple_logical_block = r"a + (p^2 + 2*omega*(b - c))*(p^3 - (a*p^2)*(c - d) - a)"
 
@@ -39,13 +39,19 @@ def main(args, log:Logueur):
         expression_to_translate = args.expression
         log.debug(f"Reading expression from the command line: {expression_to_translate}")
 
+    
+    # Create parsers:
+    # ---------------
+    logical_parser = LogicalParser(log)
+    latex_parser = LatexParser(log)
+
     sys.stdout.write("Starting tanslate process...\n")
     sys.stdout.flush()
     
-    logical_expr = logical_parser.parse_txt_expression(expression_to_translate)
+    logical_expr = logical_parser.parse(expression_to_translate)
     log.info("Expression translated successfully to a logical expression")
 
-    latex_expr = latex_parser.parse_logical_expression(logical_expr)
+    latex_expr = latex_parser.parse(logical_expr)
     log.info("Logical expression translated successfully to a latex expression")
 
     sys.stdout.write(f"I've found the following expression:\n{latex_expr}")
